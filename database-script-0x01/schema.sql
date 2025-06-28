@@ -14,12 +14,14 @@ CREATE Table Property (
     host_id CHAR(36) NOT NULL,
     name VARCHAR(20) NOT NULL,
     description TEXT NOT NULL,
-    location VARCHAR(20) NOT NULL,
+    location VARCHAR(50) NOT NULL,
     pricepernight DECIMAL NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     Foreign Key (host_id) REFERENCES User (user_id)
 );
+
+CREATE INDEX idx_property_name ON Property(name); 
 
 CREATE TABLE Booking (
     booking_id CHAR(36) PRIMARY KEY DEFAULT(UUID()),
