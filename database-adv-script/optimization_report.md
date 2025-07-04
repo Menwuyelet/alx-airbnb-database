@@ -74,7 +74,7 @@ in database_index.sql file.
 
 ## 💡 optimized query
 
-After analyzing the initial query, i optimized the query by adding where clause to filter rows based on status listing only rows with status "confirmed". and additionally we can add additional indexes at Booking. user_id and Booking.property_id since they are used on the left join if they are not automatically created.
+After analyzing the initial query, i optimized the query by adding where clause to filter rows based on status listing only rows with status "confirmed" and properties located on "Addis Ababa". Additionally we can add additional indexes at Booking. user_id and Booking.property_id since they are used on the left join if they are not automatically created.
 
 ### initial query
 
@@ -96,7 +96,7 @@ SELECT
     Property.description
 FROM Booking
 LEFT JOIN User ON Booking.user_id = User.user_id
-LEFT JOIN Property ON Booking.property_id = Property.property_id;
+LEFT JOIN Property ON Booking.property_id = Property.property_id AND Property.location = 'Addis Ababa';
 ```
 
 ### adding where to filter by status
