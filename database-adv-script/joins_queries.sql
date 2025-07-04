@@ -8,8 +8,8 @@ FROM Property
 ORDER BY Property.name ASC;
 
 SELECT User.user_id, User.email, Booking.booking_id, Booking.property_id, Booking.start_date, Booking.end_date
-FROM User FULL OUTER
-    JOIN Booking ON User.user_id = Booking.user_id;
+FROM User FULL OUTER JOIN Booking 
+    ON User.user_id = Booking.user_id;
 
 -- For mySql:
 
