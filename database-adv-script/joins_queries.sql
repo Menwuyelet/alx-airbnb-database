@@ -4,12 +4,19 @@ FROM Booking
 
 SELECT Property.property_id, Property.name, Review.review_id, Review.user_id, Review.rating, Review.comment
 FROM Property
-    LEFT JOIN Review on Property.property_id = Review.property_id;
+    LEFT JOIN Review on Property.property_id = Review.property_id
+ORDER BY Property.name ASC;
 
 SELECT User.user_id, User.email, Booking.booking_id, Booking.property_id, Booking.start_date, Booking.end_date
-FROM User
-    LEFT join Booking ON User.user_id = Booking.user_id
-UNION
-SELECT User.user_id, User.email, Booking.booking_id, Booking.property_id, Booking.start_date, Booking.end_date
-FROM User
-    RIGHT join Booking ON User.user_id = Booking.user_id;
+FROM User FULL OUTER
+    JOIN Booking ON User.user_id = Booking.user_id;
+
+-- For mySql:
+
+-- SELECT User.user_id, User.email, Booking.booking_id, Booking.property_id, Booking.start_date, Booking.end_date
+-- FROM User
+--     LEFT join Booking ON User.user_id = Booking.user_id
+-- UNION
+-- SELECT User.user_id, User.email, Booking.booking_id, Booking.property_id, Booking.start_date, Booking.end_date
+-- FROM User
+--     RIGHT join Booking ON User.user_id = Booking.user_id;
